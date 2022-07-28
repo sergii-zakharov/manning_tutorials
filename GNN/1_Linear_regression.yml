@@ -1,0 +1,98 @@
+- id: Import-CSV_1
+  inputs: {}
+  operationId: Import CSV
+  parameters:
+    filename: UPLOAD$/7fb02433c77e37d9b0462f0d507a5491.hypo_telco_vertices.csv
+    imported_table: e0c99628-f894-3a96-bf43-69d2de8003e6
+    infer: yes
+    last_settings: |-
+      {
+        "sql" : "",
+        "infer" : "yes",
+        "timestamp_format" : "yyyy-MM-dd'T'HH:mm:ss.SSSXXX",
+        "quote" : "\"",
+        "imported_columns" : "",
+        "null_value" : "",
+        "escape" : "\\",
+        "columns" : "",
+        "filename" : "UPLOAD$/7fb02433c77e37d9b0462f0d507a5491.hypo_telco_vertices.csv",
+        "comment" : "",
+        "ignore_trailing_white_space" : "no",
+        "ignore_leading_white_space" : "no",
+        "date_format" : "yyyy-MM-dd",
+        "error_handling" : "FAILFAST",
+        "limit" : "",
+        "delimiter" : ","
+      }
+  parametricParameters: {}
+  x: 194.87436754275086
+  y: 125.73854353822114
+- id: Use-table-as-vertices_1
+  inputs:
+    table:
+      boxId: Import-CSV_1
+      id: table
+  operationId: Use table as vertices
+  parameters: {}
+  parametricParameters: {}
+  x: 389.8410791845353
+  y: 140.31549394134515
+- id: Derive-vertex-attribute_1
+  inputs:
+    graph:
+      boxId: Use-table-as-vertices_1
+      id: graph
+  operationId: Derive vertex attribute
+  parameters:
+    expr: if(gender=="Female") 1 else -1
+    output: gender_feature
+  parametricParameters: {}
+  x: 546.543296018119
+  y: 112.98371193548755
+- id: Split-to-train-and-test-set_1
+  inputs:
+    graph:
+      boxId: Derive-vertex-attribute_1
+      id: graph
+  operationId: Split to train and test set
+  parameters: {}
+  parametricParameters: {}
+  x: 714.1782256540458
+  y: 169.4693947475933
+- id: Train-linear-regression-model_1
+  inputs:
+    graph:
+      boxId: Split-to-train-and-test-set_1
+      id: graph
+  operationId: Train linear regression model
+  parameters:
+    features: data_usage,gender_feature
+    label: age_train
+    name: linear_model
+  parametricParameters: {}
+  x: 896.3901056930969
+  y: 123.9164247378306
+- id: Predict-with-model_1
+  inputs:
+    graph:
+      boxId: Train-linear-regression-model_1
+      id: graph
+  operationId: Predict with model
+  parameters:
+    name: age_prediction
+  parametricParameters: {}
+  x: 1074.9577481313665
+  y: 182.22422635032686
+- id: SQL1_1
+  inputs:
+    input:
+      boxId: Predict-with-model_1
+      id: graph
+  operationId: SQL1
+  parameters:
+    sql: >
+      select sqrt(mean((age_prediction-age_test)*(age_prediction-age_test))) as
+      rmse from vertices
+  parametricParameters: {}
+  x: 1235.3042025657317
+  y: 154.89244434446925
