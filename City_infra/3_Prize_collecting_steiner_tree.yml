@@ -1,0 +1,385 @@
+- id: Import-CSV_1
+  inputs: {}
+  operationId: Import CSV
+  parameters:
+    filename: UPLOAD$/74b35ee34b0d67801c9a963f4801c9f2.bruges_locations.csv
+    imported_table: 5d253798-2141-3a20-8734-e9cb22ce7dd3
+    infer: yes
+    last_settings: |-
+      {
+        "sql" : "",
+        "infer" : "yes",
+        "timestamp_format" : "yyyy-MM-dd'T'HH:mm:ss.SSSXXX",
+        "quote" : "\"",
+        "imported_columns" : "",
+        "null_value" : "",
+        "escape" : "\\",
+        "columns" : "",
+        "filename" : "UPLOAD$/74b35ee34b0d67801c9a963f4801c9f2.bruges_locations.csv",
+        "comment" : "",
+        "ignore_trailing_white_space" : "no",
+        "ignore_leading_white_space" : "no",
+        "date_format" : "yyyy-MM-dd",
+        "error_handling" : "FAILFAST",
+        "limit" : "",
+        "delimiter" : ","
+      }
+  parametricParameters: {}
+  x: 102.80917121364143
+  y: 216.77277215648087
+- id: Import-CSV_2
+  inputs: {}
+  operationId: Import CSV
+  parameters:
+    filename: UPLOAD$/bd09b8218d9a0b700fa285859ba6b68c.bruges_road_segments.csv
+    imported_table: b8f890e9-acd3-3bae-9baf-92f745047516
+    infer: yes
+    last_settings: |-
+      {
+        "sql" : "",
+        "infer" : "yes",
+        "timestamp_format" : "yyyy-MM-dd'T'HH:mm:ss.SSSXXX",
+        "quote" : "\"",
+        "imported_columns" : "",
+        "null_value" : "",
+        "escape" : "\\",
+        "columns" : "",
+        "filename" : "UPLOAD$/bd09b8218d9a0b700fa285859ba6b68c.bruges_road_segments.csv",
+        "comment" : "",
+        "ignore_trailing_white_space" : "no",
+        "ignore_leading_white_space" : "no",
+        "date_format" : "yyyy-MM-dd",
+        "error_handling" : "FAILFAST",
+        "limit" : "",
+        "delimiter" : ","
+      }
+  parametricParameters: {}
+  x: 97
+  y: 82
+- id: Use-table-as-vertices_1
+  inputs:
+    table:
+      boxId: Import-CSV_1
+      id: table
+  operationId: Use table as vertices
+  parameters: {}
+  parametricParameters: {}
+  x: 292.18815277835154
+  y: 213.28726942829599
+- id: Use-table-as-edges_1
+  inputs:
+    graph:
+      boxId: Use-table-as-vertices_1
+      id: graph
+    table:
+      boxId: Import-CSV_2
+      id: table
+  operationId: Use table as edges
+  parameters:
+    attr: id
+    dst: dst
+    src: src
+  parametricParameters: {}
+  x: 409.5334112939082
+  y: 87.80917121364143
+- id: Bundle-vertex-attributes-into-a-Vector_1
+  inputs:
+    graph:
+      boxId: Use-table-as-edges_1
+      id: graph
+  operationId: Bundle vertex attributes into a Vector
+  parameters:
+    elements: lat,lon
+    output: location
+  parametricParameters: {}
+  x: 544.3061834503891
+  y: 191.21241881645864
+- id: Import-CSV_3
+  inputs: {}
+  operationId: Import CSV
+  parameters:
+    filename: UPLOAD$/19300221187c62033d71c0ff76110f44.plumbing_client_prospects.csv
+    imported_table: 882fc69e-2f44-3563-94d7-855ebf3f5e3d
+    infer: yes
+    last_settings: |-
+      {
+        "sql" : "",
+        "infer" : "yes",
+        "timestamp_format" : "yyyy-MM-dd'T'HH:mm:ss.SSSXXX",
+        "quote" : "\"",
+        "imported_columns" : "",
+        "null_value" : "",
+        "escape" : "\\",
+        "columns" : "",
+        "filename" : "UPLOAD$/19300221187c62033d71c0ff76110f44.plumbing_client_prospects.csv",
+        "comment" : "",
+        "ignore_trailing_white_space" : "no",
+        "ignore_leading_white_space" : "no",
+        "date_format" : "yyyy-MM-dd",
+        "error_handling" : "FAILFAST",
+        "limit" : "",
+        "delimiter" : ","
+      }
+  parametricParameters: {}
+  x: 102.11885046869378
+  y: 481.948171726239
+- id: Import-CSV_4
+  inputs: {}
+  operationId: Import CSV
+  parameters:
+    filename: UPLOAD$/1373f198e0e3e3c501932742f46679b0.water_stations_capex.csv
+    imported_table: 0fb6c86e-651b-3e90-b2b0-5d97f262426e
+    infer: yes
+    last_settings: |-
+      {
+        "sql" : "",
+        "infer" : "yes",
+        "timestamp_format" : "yyyy-MM-dd'T'HH:mm:ss.SSSXXX",
+        "quote" : "\"",
+        "imported_columns" : "",
+        "null_value" : "",
+        "escape" : "\\",
+        "columns" : "",
+        "filename" : "UPLOAD$/1373f198e0e3e3c501932742f46679b0.water_stations_capex.csv",
+        "comment" : "",
+        "ignore_trailing_white_space" : "no",
+        "ignore_leading_white_space" : "no",
+        "date_format" : "yyyy-MM-dd",
+        "error_handling" : "FAILFAST",
+        "limit" : "",
+        "delimiter" : ","
+      }
+  parametricParameters: {}
+  x: 104.68818564854581
+  y: 358.6200830933414
+- id: Use-table-as-vertex-attributes_1
+  inputs:
+    attributes:
+      boxId: Import-CSV_4
+      id: table
+    graph:
+      boxId: Bundle-vertex-attributes-into-a-Vector_1
+      id: graph
+  operationId: Use table as vertex attributes
+  parameters:
+    id_attr: id
+    id_column: id
+  parametricParameters: {}
+  x: 535.0518282737613
+  y: 350.9120775537853
+- id: Use-table-as-vertex-attributes_2
+  inputs:
+    attributes:
+      boxId: Import-CSV_3
+      id: table
+    graph:
+      boxId: Use-table-as-vertex-attributes_1
+      id: graph
+  operationId: Use table as vertex attributes
+  parameters:
+    id_attr: id
+    id_column: id
+  parametricParameters: {}
+  x: 515.781814424871
+  y: 474.24016618668287
+- id: Merge-two-vertex-attributes_1
+  inputs:
+    graph:
+      boxId: Use-table-as-vertex-attributes_2
+      id: graph
+  operationId: Merge two vertex attributes
+  parameters:
+    attr1: expected_profit
+    name: profit_capex_merge
+  parametricParameters: {}
+  x: 699.4892797842913
+  y: 472.9554985967569
+- id: Graph-visualization_1
+  inputs:
+    graph:
+      boxId: Merge-two-vertex-attributes_1
+      id: graph
+  operationId: Graph visualization
+  parameters:
+    state: >-
+      {"left":{"projectPath":"","graphMode":"sampled","display":"svg","filters":{"vertex":{"profit_capex_merge":"*"},"edge":{}},"bucketCount":4,"preciseBucketSizes":false,"relativeEdgeDensity":false,"axisOptions":{"vertex":{},"edge":{}},"sampleRadius":1,"attributeTitles":{"size":"profit_capex_merge","geo
+      coordinates":"location","color":"node_type","icon":"node_type"},"animate":{"enabled":false,"style":"expand","labelAttraction":0},"centers":["127351900654803017","183444594447357121","221358426842727884","262047297737596026","282707387511474828","306705401313762463","333331368165514903","349273449249645191","350351056544209791","358748220119060403","471827261549448850","480353252668345745","516392563767247598","575146737123987668","631510799835209726","702796382091614259","784712068535158729","990704884804230601","1001375696691399977","1014317030154701568","1076227686646423610","1124925365878262393","1128781533545501863","1228104288648044334","1253892427639427576","1284377740434214269","1321222800282747024","1360977073409108504","1373071220278305041","1474960901239996662","1519588909980328481","1573626444741872212","1575937381960262882","1582664559171211427","1599781051817788045","1651014879173157061","1661673940029807382","1664819041501453957","1720289991533273695","1777307275820537712","1783256320921576135","1861302937616126470","1868145073921728564","1871871825634398337","1933256516136085684","1972106015746828067","2023972384410708931","2069002943255806652","2078270121175943803","2105058261697833525","2142032883529812985","2186833661624592001","2197045912738472531","2259750519704650004","2280241435011718923","2352501992024187139","2355267671789936196","2384524722722318958","2439836239273143219","2445574002047982927","2458848998635612137","2469260673670974407","2485451085469193424","2498460601538318520","2504038162033023545","2537712573944436888","2552139837243131472","2580325349669735856","2696031983372344186","2794504605533214770","2807119259489015591","2846893663127080614","2869336241638217002","2910752439474852640","2978214332606710650","3002839639267477952","3027131063760586823","3037472254087664688","3078692966487822254","3099284865065943698","3120880746609254733","3177357423362965894","3207129625557730932","3214232118485846859","3234346597089289696","3244230888795414269","3256938739246571612","3264574581213495557","3346972678383741164","3397952329574518698","3529893802217054354","3552264452910882258","3578779098505282161","3597049880792536630","3603712023608694672","3656611748519092087","3676600375990821740","3725713305545743388","3796514595879787959","3821133314060723344","3925055193158260388","4013465703377010776","4016188519369147010","4152146005476771673","4158643913038499746","4183935291817467541","4295081284432045189","4374710579395301065","4424302449343338599","4446475780649653598","4459541363221860128","4518246483757107848","4537355944308253507","4594663104528259106","4644068448341590111","4665194632261403723","4668843361598179998","4678007331454198294","4736502741621281652","4739560998854207280","4741445986985969419","4776778964943247922","4778739617513871475","4803382975922182597","4877024394985082006","4908734537963410163","4966550093462243376","4983787918934942054","5043683939412085862","5072686839949697529","5092878434690925245","5107598842392488946","5146449772227334195","5165625980865224696","5230315146190001063","5310418390794376282","5445210656569565131","5494542277269259634","5538881286250175396","5600628463401708021","5611790877245578846","5654152156865896804","5719762807424034898","5720434209596640508","5841240468423182166","5866768680288782943","5938153837066986421","5990281803598924484","5992566421257723068","6048840749217223403","6069305564008027724","6079925493417640368","6131089115237582491","6154409267236439199","6177586693177092878","6234973275932334544","6256123666287829880","6335733968905704262","6337634096797189920","6358363399969047078","6388555864713732028","6391063438419826543","6405643091453149427","6524713165584861051","6526934977936892562","6539314654231923382","6555447788346280330","6569275688958824628","6593903409391210662","6623621005371772612","6737046607713275068","6786219907328518397","6793998634267443838","6814453394539808476","6846687832765897272","6849928119302754545","6930714332426667574","6942018815198760123","7002225739768538416","7020507237999190242","7058009006937220258","7140055015573429254","7213254035824977905","7219558867426880394","7220638566370513811","7221340905192565352","7256821222002918700","7400232194356023954","7422942641387480158","7426244522050325348","7548130136223128653","7552092789014531741","7575999818229612819","7588525720981214010","7590251481790415068","7623644234041533759","7628114350103863475","7644126318895834176","7657407452991728492","7660212229844765442","7668620530269821430","7735275527895787603","7761336165382230845","7802131938013087831","7803648546799884733","7820183135802368779","7898506262491438008","7918287494582371843","7935321197439361517","7942491486426235217","7963032442397271116","8000823640591442263","8035977595721875970","8036747094947537645","8040079109100934812","8042371333146806421","8062950570161341144","8085229583432947937","8341351484159436475","8407450506858856963","8411002565071743897","8427263036376482001","8454841871787624726","8493181279607456566","8504986718775022524","8694877316104333783","8728591757110940549","8746510893245802451","8761786382520687520","8863403607937000311","8927585284221048805","9020852375954394205","9029435481548400697","9124897705296925285","9165472570579883610","9212852536665442676"],"customVisualizationFilters":false,"vertexColorMap":"Viridis","labelColorMap":"Viridis","edgeColorMap":"Viridis","sliderColorMap":"Blue
+      to
+      orange","edgeStyle":"no","lastCentersRequest":{"count":500,"filters":[{"attributeName":"profit_capex_merge","valueSpec":"*"}]},"lastCentersResponse":["127351900654803017","183444594447357121","221358426842727884","262047297737596026","282707387511474828","306705401313762463","333331368165514903","349273449249645191","350351056544209791","358748220119060403","471827261549448850","480353252668345745","516392563767247598","575146737123987668","631510799835209726","702796382091614259","784712068535158729","990704884804230601","1001375696691399977","1014317030154701568","1076227686646423610","1124925365878262393","1128781533545501863","1228104288648044334","1253892427639427576","1284377740434214269","1321222800282747024","1360977073409108504","1373071220278305041","1474960901239996662","1519588909980328481","1573626444741872212","1575937381960262882","1582664559171211427","1599781051817788045","1651014879173157061","1661673940029807382","1664819041501453957","1720289991533273695","1777307275820537712","1783256320921576135","1861302937616126470","1868145073921728564","1871871825634398337","1933256516136085684","1972106015746828067","2023972384410708931","2069002943255806652","2078270121175943803","2105058261697833525","2142032883529812985","2186833661624592001","2197045912738472531","2259750519704650004","2280241435011718923","2352501992024187139","2355267671789936196","2384524722722318958","2439836239273143219","2445574002047982927","2458848998635612137","2469260673670974407","2485451085469193424","2498460601538318520","2504038162033023545","2537712573944436888","2552139837243131472","2580325349669735856","2696031983372344186","2794504605533214770","2807119259489015591","2846893663127080614","2869336241638217002","2910752439474852640","2978214332606710650","3002839639267477952","3027131063760586823","3037472254087664688","3078692966487822254","3099284865065943698","3120880746609254733","3177357423362965894","3207129625557730932","3214232118485846859","3234346597089289696","3244230888795414269","3256938739246571612","3264574581213495557","3346972678383741164","3397952329574518698","3529893802217054354","3552264452910882258","3578779098505282161","3597049880792536630","3603712023608694672","3656611748519092087","3676600375990821740","3725713305545743388","3796514595879787959","3821133314060723344","3925055193158260388","4013465703377010776","4016188519369147010","4152146005476771673","4158643913038499746","4183935291817467541","4295081284432045189","4374710579395301065","4424302449343338599","4446475780649653598","4459541363221860128","4518246483757107848","4537355944308253507","4594663104528259106","4644068448341590111","4665194632261403723","4668843361598179998","4678007331454198294","4736502741621281652","4739560998854207280","4741445986985969419","4776778964943247922","4778739617513871475","4803382975922182597","4877024394985082006","4908734537963410163","4966550093462243376","4983787918934942054","5043683939412085862","5072686839949697529","5092878434690925245","5107598842392488946","5146449772227334195","5165625980865224696","5230315146190001063","5310418390794376282","5445210656569565131","5494542277269259634","5538881286250175396","5600628463401708021","5611790877245578846","5654152156865896804","5719762807424034898","5720434209596640508","5841240468423182166","5866768680288782943","5938153837066986421","5990281803598924484","5992566421257723068","6048840749217223403","6069305564008027724","6079925493417640368","6131089115237582491","6154409267236439199","6177586693177092878","6234973275932334544","6256123666287829880","6335733968905704262","6337634096797189920","6358363399969047078","6388555864713732028","6391063438419826543","6405643091453149427","6524713165584861051","6526934977936892562","6539314654231923382","6555447788346280330","6569275688958824628","6593903409391210662","6623621005371772612","6737046607713275068","6786219907328518397","6793998634267443838","6814453394539808476","6846687832765897272","6849928119302754545","6930714332426667574","6942018815198760123","7002225739768538416","7020507237999190242","7058009006937220258","7140055015573429254","7213254035824977905","7219558867426880394","7220638566370513811","7221340905192565352","7256821222002918700","7400232194356023954","7422942641387480158","7426244522050325348","7548130136223128653","7552092789014531741","7575999818229612819","7588525720981214010","7590251481790415068","7623644234041533759","7628114350103863475","7644126318895834176","7657407452991728492","7660212229844765442","7668620530269821430","7735275527895787603","7761336165382230845","7802131938013087831","7803648546799884733","7820183135802368779","7898506262491438008","7918287494582371843","7935321197439361517","7942491486426235217","7963032442397271116","8000823640591442263","8035977595721875970","8036747094947537645","8040079109100934812","8042371333146806421","8062950570161341144","8085229583432947937","8341351484159436475","8407450506858856963","8411002565071743897","8427263036376482001","8454841871787624726","8493181279607456566","8504986718775022524","8694877316104333783","8728591757110940549","8746510893245802451","8761786382520687520","8863403607937000311","8927585284221048805","9020852375954394205","9029435481548400697","9124897705296925285","9165472570579883610","9212852536665442676"]},"right":{"display":"svg","filters":{"vertex":{},"edge":{}},"bucketCount":4,"preciseBucketSizes":false,"relativeEdgeDensity":false,"axisOptions":{"vertex":{},"edge":{}},"sampleRadius":1,"attributeTitles":{},"animate":{"enabled":false,"style":"expand","labelAttraction":0},"centers":["auto"],"customVisualizationFilters":false,"vertexColorMap":"Viridis","labelColorMap":"Viridis","edgeColorMap":"Viridis","sliderColorMap":"Blue
+      to orange"}}
+  parametricParameters: {}
+  x: 858.7880609351175
+  y: 388.1674376616398
+- id: Derive-edge-attribute_1
+  inputs:
+    graph:
+      boxId: Merge-two-vertex-attributes_1
+      id: graph
+  operationId: Derive edge attribute
+  parameters:
+    expr: >-
+      val R = 6371000
+
+      val phi1 = src$lat*Math.PI/180
+
+      val phi2 = dst$lat*Math.PI/180
+
+      val d_phi = (dst$lat-src$lat)*Math.PI/180
+
+      val d_lambda = (dst$lon-src$lon)*Math.PI/180
+
+      val a =
+      Math.sin(d_phi/2)*Math.sin(d_phi/2)+Math.cos(phi1)*Math.cos(phi2)*Math.sin(d_lambda/2)*Math.sin(d_lambda/2)
+
+      val c = 2*Math.atan2(Math.sqrt(a), Math.sqrt(1-a))
+
+      R*c
+    output: distance
+  parametricParameters: {}
+  x: 298.67299172737427
+  y: 630.9696121576569
+- id: Aggregate-edge-attribute-globally_1
+  inputs:
+    graph:
+      boxId: Derive-edge-attribute_1
+      id: graph
+  operationId: Aggregate edge attribute globally
+  parameters:
+    aggregate_distance: sum
+  parametricParameters: {}
+  x: 511.927811655093
+  y: 592.4295844598764
+- id: Compute-distance-via-shortest-path_1
+  inputs:
+    graph:
+      boxId: Derive-vertex-attribute_1
+      id: graph
+  operationId: Compute distance via shortest path
+  parameters:
+    edge_distance: distance
+    iterations: '100'
+    starting_distance: node_type_station_0
+  parametricParameters: {}
+  x: 928.3982811178917
+  y: 572.3248150920989
+- id: Derive-vertex-attribute_1
+  inputs:
+    graph:
+      boxId: Aggregate-edge-attribute-globally_1
+      id: graph
+  operationId: Derive vertex attribute
+  parameters:
+    expr: if(node_type=="STATION") Some(0) else None
+    output: node_type_station_0
+  parametricParameters: {}
+  x: 747.7460692081604
+  y: 596.2487513651346
+- id: Graph-visualization_2
+  inputs:
+    graph:
+      boxId: Compute-distance-via-shortest-path_1
+      id: graph
+  operationId: Graph visualization
+  parameters:
+    state: >-
+      {"left":{"projectPath":"","graphMode":"sampled","display":"svg","filters":{"vertex":{"node_type":"*"},"edge":{}},"bucketCount":4,"preciseBucketSizes":false,"relativeEdgeDensity":false,"axisOptions":{"vertex":{},"edge":{}},"sampleRadius":1,"attributeTitles":{"color":"node_type","geo
+      coordinates":"location","size":"shortest_distance"},"animate":{"enabled":false,"style":"expand","labelAttraction":0},"centers":["*"],"customVisualizationFilters":false,"vertexColorMap":"Viridis","labelColorMap":"Viridis","edgeColorMap":"Viridis","sliderColorMap":"Blue
+      to
+      orange","edgeStyle":"no"},"right":{"display":"svg","filters":{"vertex":{},"edge":{}},"bucketCount":4,"preciseBucketSizes":false,"relativeEdgeDensity":false,"axisOptions":{"vertex":{},"edge":{}},"sampleRadius":1,"attributeTitles":{},"animate":{"enabled":false,"style":"expand","labelAttraction":0},"centers":["auto"],"customVisualizationFilters":false,"vertexColorMap":"Viridis","labelColorMap":"Viridis","edgeColorMap":"Viridis","sliderColorMap":"Blue
+      to orange"}}
+  parametricParameters: {}
+  x: 1105.8966195644716
+  y: 625.0303223263176
+- id: Derive-edge-attribute_2
+  inputs:
+    graph:
+      boxId: Compute-distance-via-shortest-path_1
+      id: graph
+  operationId: Derive edge attribute
+  parameters:
+    expr: distance*1200
+    output: cost
+  parametricParameters: {}
+  x: 1104.8200703892878
+  y: 511.70717160509685
+- id: Derive-vertex-attribute_2
+  inputs:
+    graph:
+      boxId: Derive-edge-attribute_2
+      id: graph
+  operationId: Derive vertex attribute
+  parameters:
+    expr: expected_profit*5
+    output: expected_profit_5y
+  parametricParameters: {}
+  x: 1261.6512889383048
+  y: 448.97468418549005
+- id: Find-Steiner-tree_1
+  inputs:
+    graph:
+      boxId: Derive-vertex-attribute_2
+      id: graph
+  operationId: Find Steiner tree
+  parameters:
+    gain: expected_profit_5y
+  parametricParameters: {}
+  x: 1437.3022537132038
+  y: 499.1606741211755
+- id: Fill-vertex-attributes-with-constant-default-values_1
+  inputs:
+    graph:
+      boxId: Find-Steiner-tree_1
+      id: graph
+  operationId: Fill vertex attributes with constant default values
+  parameters:
+    fill_node: '0'
+    fill_node_type: NOTHING
+    fill_rootpoints: '0'
+  parametricParameters: {}
+  x: 1594.2508613888565
+  y: 434.81440201999044
+- id: Derive-vertex-attribute_3
+  inputs:
+    graph:
+      boxId: Fill-vertex-attributes-with-constant-default-values_1
+      id: graph
+  operationId: Derive vertex attribute
+  parameters:
+    expr: |-
+      if (node_type == "CLIENT") {
+        if (node == 0)
+          "CLIENT NOT REACHED"
+        else
+          "CLIENT REACHED"
+      } else if (node_type == "STATION") {
+        if (rootpoints == 0)
+          "STATION NOT BUILT"
+        else
+          "STATION BUILT"
+      } else {
+        if (node != 0)
+          "PIPING"
+        else
+          "NOTHING"
+      }
+          
+    output: node_type_STEINER
+  parametricParameters: {}
+  x: 1740.0203654200973
+  y: 505.8770352352202
+- id: Graph-visualization_3
+  inputs:
+    graph:
+      boxId: Derive-vertex-attribute_3
+      id: graph
+  operationId: Graph visualization
+  parameters:
+    state: >-
+      {"left":{"projectPath":"","graphMode":"sampled","display":"svg","filters":{"vertex":{"node_type":"","node_type_STEINER":"!\"NOTHING\""},"edge":{"arc":"*"}},"bucketCount":4,"preciseBucketSizes":false,"relativeEdgeDensity":false,"axisOptions":{"vertex":{},"edge":{}},"sampleRadius":1,"attributeTitles":{"geo
+      coordinates":"location","color":"node_type_STEINER","size":"profit_capex_merge"},"animate":{"enabled":false,"style":"expand","labelAttraction":0},"centers":["*"],"customVisualizationFilters":false,"vertexColorMap":"Viridis","labelColorMap":"Viridis","edgeColorMap":"Viridis","sliderColorMap":"Blue
+      to
+      orange"},"right":{"display":"svg","filters":{"vertex":{},"edge":{}},"bucketCount":4,"preciseBucketSizes":false,"relativeEdgeDensity":false,"axisOptions":{"vertex":{},"edge":{}},"sampleRadius":1,"attributeTitles":{},"animate":{"enabled":false,"style":"expand","labelAttraction":0},"centers":["auto"],"customVisualizationFilters":false,"vertexColorMap":"Viridis","labelColorMap":"Viridis","edgeColorMap":"Viridis","sliderColorMap":"Blue
+      to orange"}}
+  parametricParameters: {}
+  x: 1900.3668198544617
+  y: 454.857708824286
